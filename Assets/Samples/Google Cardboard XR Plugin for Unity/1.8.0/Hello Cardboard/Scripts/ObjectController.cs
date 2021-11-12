@@ -55,8 +55,14 @@ public class ObjectController : MonoBehaviour
         _startingPosition = transform.parent.localPosition;
         _myRenderer = GetComponent<Renderer>();
         SetMaterial(false);
+        init();
     }
 
+    public void init(){
+        gazed = false;
+        timer = 0;
+    }
+    
     /// <summary>
     /// Teleports this instance randomly when triggered by a pointer click.
     /// </summary>
@@ -101,7 +107,6 @@ public class ObjectController : MonoBehaviour
     {
         SetMaterial(false);
         gazed = false;
-        timer = 0;
     }
 
     /// <summary>
@@ -131,9 +136,11 @@ public class ObjectController : MonoBehaviour
     void Update(){
         if (gazed){
             timer++;
-            if(timer > 30){
+            if(timer > 60){
                 timer = 0;
                 TeleportRandomly();
+                timer = 0;
+                gazed = false;
             }
         }
     }

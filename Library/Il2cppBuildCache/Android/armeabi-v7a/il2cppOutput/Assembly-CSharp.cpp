@@ -1696,6 +1696,8 @@ inline Renderer_t58147AB5B00224FE1460FD47542DC0DA7EC9378C * Component_GetCompone
 }
 // System.Void ObjectController::SetMaterial(System.Boolean)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ObjectController_SetMaterial_mF4DF2222B39EC502F91056938CFFAA13AD4DE4C1 (ObjectController_tEE8AA18007DEB85D79F9AC0438AC2FB36BFAF5CD * __this, bool ___gazedAt0, const RuntimeMethod* method);
+// System.Void ObjectController::init()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ObjectController_init_mC427A52D9DDAD9E4A78BEFEB5683D7CA7B310EC3 (ObjectController_tEE8AA18007DEB85D79F9AC0438AC2FB36BFAF5CD * __this, const RuntimeMethod* method);
 // System.Int32 UnityEngine.Transform::GetSiblingIndex()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t Transform_GetSiblingIndex_mEF9DF6406920F8EBCFBC87C6D0630FE3E9E3C1EE (Transform_tA8193BB29D4D2C7EC04918F3ED1816345186C3F1 * __this, const RuntimeMethod* method);
 // System.Int32 UnityEngine.Transform::get_childCount()
@@ -2118,6 +2120,20 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ObjectController_Start_mA8D89923C9057F3A
 		__this->set__myRenderer_13(L_3);
 		// SetMaterial(false);
 		ObjectController_SetMaterial_mF4DF2222B39EC502F91056938CFFAA13AD4DE4C1(__this, (bool)0, /*hidden argument*/NULL);
+		// init();
+		ObjectController_init_mC427A52D9DDAD9E4A78BEFEB5683D7CA7B310EC3(__this, /*hidden argument*/NULL);
+		// }
+		return;
+	}
+}
+// System.Void ObjectController::init()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ObjectController_init_mC427A52D9DDAD9E4A78BEFEB5683D7CA7B310EC3 (ObjectController_tEE8AA18007DEB85D79F9AC0438AC2FB36BFAF5CD * __this, const RuntimeMethod* method)
+{
+	{
+		// gazed = false;
+		__this->set_gazed_11((bool)0);
+		// timer = 0;
+		__this->set_timer_10(0);
 		// }
 		return;
 	}
@@ -2241,8 +2257,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ObjectController_OnPointerExit_mAFAE51E7
 		ObjectController_SetMaterial_mF4DF2222B39EC502F91056938CFFAA13AD4DE4C1(__this, (bool)0, /*hidden argument*/NULL);
 		// gazed = false;
 		__this->set_gazed_11((bool)0);
-		// timer = 0;
-		__this->set_timer_10(0);
 		// }
 		return;
 	}
@@ -2336,18 +2350,18 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ObjectController_Update_m540557ED254A845
 		bool L_0 = __this->get_gazed_11();
 		if (!L_0)
 		{
-			goto IL_002d;
+			goto IL_003b;
 		}
 	}
 	{
 		// timer++;
 		int32_t L_1 = __this->get_timer_10();
 		__this->set_timer_10(((int32_t)il2cpp_codegen_add((int32_t)L_1, (int32_t)1)));
-		// if(timer > 30){
+		// if(timer > 60){
 		int32_t L_2 = __this->get_timer_10();
-		if ((((int32_t)L_2) <= ((int32_t)((int32_t)30))))
+		if ((((int32_t)L_2) <= ((int32_t)((int32_t)60))))
 		{
-			goto IL_002d;
+			goto IL_003b;
 		}
 	}
 	{
@@ -2355,9 +2369,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ObjectController_Update_m540557ED254A845
 		__this->set_timer_10(0);
 		// TeleportRandomly();
 		ObjectController_TeleportRandomly_m0609E15B3460753A6538D1D7A0371DDA30E1B305(__this, /*hidden argument*/NULL);
+		// timer = 0;
+		__this->set_timer_10(0);
+		// gazed = false;
+		__this->set_gazed_11((bool)0);
 	}
 
-IL_002d:
+IL_003b:
 	{
 		// }
 		return;
