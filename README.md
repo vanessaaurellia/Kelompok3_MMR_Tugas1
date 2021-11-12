@@ -1,4 +1,4 @@
-# Kelompok 3 MMR Tugas1
+# Multimedia & Mixed Reality Kelompok 3 Tugas 1
 LA75 - LEC
 - Aloysius Reyhan - 2301854813
 - Meily - 2301901923
